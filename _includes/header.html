@@ -4,6 +4,19 @@
             <a href="{{ site.baseurl }}/" class="brand-logo">
                 {{ site.title }}
             </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                {% for cat in site.categories %}
+                    {% for post in site.posts %}
+                        {% if post.layout == "category" && post.category == cat %}
+                            <li>
+                                <a href="/{{ cat | first }}">
+                                    {{ post.name }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </nav>
