@@ -2,4 +2,45 @@
 layout: default
 ---
 <div class="container">
+    <div class="row">
+        {% for post in site.posts %}
+            {% if post.cat == null %}
+                <div class="col s12 m6">
+                    <div class="card sticky-action">
+                        <div class="card-image waves-effect waves-block waves-light overlay-container">
+                            <iframe src="{{ site.baseurl | prepend: site.url }}/{{ post.project }}/" scrolling="no"></iframe>
+                            <div class="overlay activator"></div>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-title activator">
+                                {{ post.title }}
+                                <i class="material-icons right">
+                                    more_vert
+                                </i>
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <p class="card-title grey-text text-darken-4">
+                                {{ post.title }}
+                                <i class="material-icons right">
+                                    close
+                                </i>
+                            </p>
+                            <p>
+                                {{ post.description }}
+                            </p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ site.baseurl | prepend: site.url }}/{{ post.project }}/">
+                                View Project
+                            </a>
+                            <a href="https://github.com/zachdeibert/{{ post.project }}">
+                                View Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
